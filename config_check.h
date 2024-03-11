@@ -1,30 +1,8 @@
 // Configuration checks Arduino core, esp-idf, USB menu options
 
 
-// check Arduino core version
-#if !defined ESP_ARDUINO_VERSION_VAL
-  #error "Invalid esp32-core version (expected: 2.0.0)"
-#else
-  #if defined ESP_ARDUINO_VERSION && ESP_ARDUINO_VERSION == ESP_ARDUINO_VERSION_VAL(2, 0, 0)
-    // fine, that's our target esp32 core
-  #else
-    #error "Invalid esp32-core version (expected: 2.0.0)"
-  #endif
-#endif
-
-
-// check esp-idf version
-#if !defined ESP_IDF_VERSION_VAL
-  #error "Invalid esp-idf version (expected: 4.4.0)"
-#else
-  #if defined ESP_IDF_VERSION && ESP_IDF_VERSION == ESP_IDF_VERSION_VAL(4, 4, 0)
-    // fine, that's our target for esp-idf core
-  #else
-    #error "Invalid esp-idf version (expected: 4.4.0)"
-  #endif
-#endif
-
 // check target config for device
+// check Arduino core version
 #if !defined CONFIG_IDF_TARGET_ESP32S2
   #error "This project is for ESP32-S2 only!"
 #endif
