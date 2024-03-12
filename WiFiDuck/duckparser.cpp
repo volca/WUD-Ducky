@@ -47,11 +47,6 @@ namespace duckparser
   char last_char;
   bool line_end;
 
-  // Keys and Command sets
-  duckCommandSet *keys = nullptr;            // Legacy WiFiDuck named keys
-  duckCommandSet *legacy_commands = nullptr; // Legacy WiFiDuck commands
-  duckCommandSet *custom_commands = nullptr; // WUD commands
-
   // state flags
   bool inString  = false;
   bool inComment = false;

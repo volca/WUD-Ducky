@@ -29,6 +29,13 @@ struct duckCommandSet
 
 namespace duckparser
 {
+
+  // Keys and Command sets
+  duckCommandSet *keys = nullptr;            // Legacy WiFiDuck named keys
+  duckCommandSet *legacy_commands = nullptr; // Legacy WiFiDuck commands
+  duckCommandSet *custom_commands = nullptr; // WUD commands
+
+                                             //
   void init( duckCommandSet* user_commands = nullptr );
 
   void parse(const char* str, size_t len); // legacy parser

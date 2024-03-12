@@ -25,6 +25,7 @@
 \*/
 #pragma once
 
+#include <Arduino.h>
 #include "prefs.hpp"
 
 #include <Preferences.h>

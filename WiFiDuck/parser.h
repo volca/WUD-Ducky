@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <Arduino.h>
 #include <stddef.h> // size_t
 
 #define COMPARE_UNEQUAL 0

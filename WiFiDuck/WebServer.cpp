@@ -28,7 +28,7 @@
 
 #include "./WebServer.hpp"
 #include "WebUI.cpp"
-#include "NTP.cpp"
+#include "NTP.hpp"
 
 extern fs::FS* duckyFS;
 

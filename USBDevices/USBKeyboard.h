@@ -27,6 +27,7 @@
 
 #if CONFIG_TINYUSB_HID_ENABLED
 
+#include "Arduino.h"
 #include "USBConfig.h"
 #include "USBHIDKeyboard.h"
 

@@ -25,13 +25,24 @@
 \*/
 #pragma once
 
+#include <Arduino.h>
 #include "NTP.hpp"
+#include "logger.h"
 
 #include "prefs.hpp"
 
-
 namespace NTP
 {
+
+  bool enabled = false;
+
+  // Timezone is using a float because Newfoundland, India, Iran, Afghanistan, Myanmar, Sri Lanka, the Marquesas,
+  // as well as parts of Australia use half-hour deviations from standard time, also some nations such as Nepal
+  // and some provinces such as the Chatham Islands of New Zealand, use quarter-hour deviations.
+  float timezone = 0; // UTC
+  uint8_t daysavetime = 1; // UTC + 1
+  const char* defaultServer = "pool.ntp.org";
+  uint8_t currentServer = 0;
 
   //const char* PREF_NAMESPACE = "NTP";
   const char* NVS_TZ_KEY      = "TZ";
@@ -39,6 +50,16 @@ namespace NTP
   const char* NVS_NTPZONE_KEY = "NTPZONE";
   uint32_t nvs_handle = 0;
 
+  const Server Servers[] =
+  {
+    { "Global",        "pool.ntp.org" },
+    { "Africa",        "africa.pool.ntp.org" },
+    { "Asia",          "asia.pool.ntp.org" },
+    { "Europe",        "europe.pool.ntp.org" },
+    { "North America", "north-america.pool.ntp.org" },
+    { "Oceania",       "oceania.pool.ntp.org" },
+    { "South America", "south-america.pool.ntp.org" },
+  };
 
   void enable()
   {
@@ -70,6 +91,10 @@ namespace NTP
   {
     daysavetime = set ? 1 : 0;
     prefs::setUChar( NVS_DST_KEY, daysavetime );
+  }
+
+  size_t getServerCount() {
+    return sizeof( Servers ) / sizeof( Server );
   }
 
   void setServer( uint8_t id )

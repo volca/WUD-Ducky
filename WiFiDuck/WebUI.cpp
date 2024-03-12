@@ -27,6 +27,9 @@
 #pragma once
 
 
+#include "keyboard.hpp"
+#include "duckparser.hpp"
+#include "WebServer.hpp"
 #include "WebUI.hpp"
 #include "NTP.hpp"
 

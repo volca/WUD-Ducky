@@ -26,6 +26,7 @@
 
 #pragma once
 
+#include <Arduino.h>
 #include "led_controls.hpp"
 
 

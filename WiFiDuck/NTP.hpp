@@ -27,7 +27,6 @@
 
 namespace NTP
 {
-  bool enabled = false;
 
   struct Server
   {
@@ -35,30 +34,25 @@ namespace NTP
     const char* addr;
   };
 
+  extern bool enabled;
+
   // Timezone is using a float because Newfoundland, India, Iran, Afghanistan, Myanmar, Sri Lanka, the Marquesas,
   // as well as parts of Australia use half-hour deviations from standard time, also some nations such as Nepal
   // and some provinces such as the Chatham Islands of New Zealand, use quarter-hour deviations.
-  float timezone = 0; // UTC
-  uint8_t daysavetime = 1; // UTC + 1
-  const char* defaultServer = "pool.ntp.org";
-  uint8_t currentServer = 0;
+  extern float timezone; // UTC
+  extern uint8_t daysavetime; // UTC + 1
+  extern const char* defaultServer;
+  extern uint8_t currentServer;
 
   void setTimezone( float tz );
   void setDst( bool set );
   void setServer( uint8_t id );
   void loadPrefServer();
   void enable();
+  void loadPrefs();
+  size_t getServerCount();
 
-  const Server Servers[] =
-  {
-    { "Global",        "pool.ntp.org" },
-    { "Africa",        "africa.pool.ntp.org" },
-    { "Asia",          "asia.pool.ntp.org" },
-    { "Europe",        "europe.pool.ntp.org" },
-    { "North America", "north-america.pool.ntp.org" },
-    { "Oceania",       "oceania.pool.ntp.org" },
-    { "South America", "south-america.pool.ntp.org" },
-  };
+  extern const Server Servers[];
 
 };
 

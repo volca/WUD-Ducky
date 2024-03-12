@@ -26,7 +26,6 @@
 
 // Configuration checks Arduino core, esp-idf, USB menu options
 
-
 // check Arduino core version
 #if !defined ESP_ARDUINO_VERSION_VAL
   #error "Invalid esp32-core version (expected: >=2.0.2)"

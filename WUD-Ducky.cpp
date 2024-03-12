@@ -31,6 +31,8 @@
  *
 \*/
 
+#include <Arduino.h>
+#include "WiFiDuck/NTP.hpp"
 #include "config_check.h" // fail early if the right board settings aren't selected
 #include "WiFiDuck/duckparser.cpp" // SpaceHuhn's WiFiDuck implementation, with some mouse tweaks
 #include "WiFiDuck/WebServer.cpp"  // WUD Ducky Web UI
@@ -199,7 +201,7 @@ void SetPassword_STA()
 void SetNTPZone()
 {
   if( duckparser::wordnode->len > 0 ) {
-    size_t servers_count = sizeof( NTP::Servers ) / sizeof( NTP::Server );
+    size_t servers_count = NTP::getServerCount();
     // TODO: parse float
     uint8_t zonenum = atoi( duckparser::wordnode->str );
     if( zonenum < servers_count ) {
